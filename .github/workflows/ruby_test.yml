@@ -37,7 +37,7 @@ jobs:
       id: yarn-cache
       run: echo "::set-output name=dir::$(yarn cache dir)"
 
-    - name: Cache Node Modules
+    - name: Get Node Modules Cache
       id: node-modules-cache
       uses: actions/cache@v1
       with:
@@ -45,7 +45,7 @@ jobs:
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
-    - name: Cache Assets
+    - name: Get Assets Cache
       id: assets-cache
       uses: actions/cache@v1
       with:
