@@ -23,8 +23,13 @@ jobs:
         env:
           POSTGRES_USER: project_manager
           POSTGRES_DB: project_manager_test
-          POSTGRES_PASSWORD: ""
+          POSTGRES_PASSWORD: password
         ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
     - uses: actions/checkout@v2
@@ -36,13 +41,21 @@ jobs:
       with:
         ruby-version: '3.0.0'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Install library for postgres
-      run: sudo apt-get install libpq-dev
     - name: Setup test database
       env:
         RAILS_ENV: test
         PGHOST: localhost
-        PGUSER: project_manager
-      run: bundle exec rake db:setup
+        POSTGRES_DB: project_manager_test
+        POSTGRES_USER: project_manager
+        POSTGRES_PASSWORD: postgres
+      run: |
+        cp config/database.ci.yml config/database.yml
+        rake db:create db:migrate
     - name: Run tests
+        PGHOST: localhost
+        POSTGRES_DB: project_manager_test
+        POSTGRES_USER: project_manager
+        POSTGRES_PASSWORD: postgres
+        PGPORT: ${{ job.services.postgres.ports[5432] }}
+        RAILS_ENV: test
       run: bundle exec rake
