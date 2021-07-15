@@ -15,31 +15,6 @@ ActiveRecord::Schema.define(version: 2021_07_15_174223) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "boards", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "columns", force: :cascade do |t|
-    t.bigint "board_id", null: false
-    t.string "title"
-    t.integer "order"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["board_id"], name: "index_columns_on_board_id"
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.bigint "column_id", null: false
-    t.string "title"
-    t.string "body"
-    t.integer "value"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["column_id"], name: "index_tasks_on_column_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -52,6 +27,4 @@ ActiveRecord::Schema.define(version: 2021_07_15_174223) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "columns", "boards"
-  add_foreign_key "tasks", "columns"
 end
