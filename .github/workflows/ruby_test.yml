@@ -52,6 +52,7 @@ jobs:
         cp config/database.ci.yml config/database.yml
         rake db:create db:migrate
     - name: Run tests
+      env:
         PGHOST: localhost
         POSTGRES_DB: project_manager_test
         POSTGRES_USER: project_manager
