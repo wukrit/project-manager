@@ -1,8 +1,11 @@
 require 'simplecov'
-SimpleCov.start 'rails'
-
-require 'codecov'
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
+SimpleCov.start 'rails' do
+  require 'codecov'
+  formatter SimpleCov::Formatter::Codecov
+  add_filter 'app/helpers'
+  add_filter 'app/jobs'
+  add_filter 'app/channels'
+end
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative "../config/environment"
