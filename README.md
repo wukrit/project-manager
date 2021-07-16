@@ -1,24 +1,18 @@
-# README
+# Agile Project Manager
+[![codecov](https://codecov.io/gh/wukrit/project-manager/branch/main/graph/badge.svg?token=2ANEUJ2VE6)](https://codecov.io/gh/wukrit/project-manager)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## System dependencies
+Ruby version `3.0.0`
 
-Things you may want to cover:
+Bundler gem, preferred version `2.2.15`
 
-* Ruby version
+## Setting up
+- Clone the git repo and navigate to code directory
+- Install the gems: `bundle install`
+- Run migrations: `rake db:migrate`
+- Start the server: `rails server`
 
-* System dependencies
+Navigate to [localhost:3000](http://localhost:3000) to see the app in action.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Testing
+Run `rake test` in the terminal to run the testing suite.
