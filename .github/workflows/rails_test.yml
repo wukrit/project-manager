@@ -93,7 +93,7 @@ jobs:
       uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        files: ./.resultset.json
+        files: .resultset.json
         directory: ./coverage
         flags: unittests
         name: codecov-umbrella
