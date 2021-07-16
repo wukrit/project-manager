@@ -1,10 +1,14 @@
 require 'simplecov'
 SimpleCov.start 'rails' do
-  require 'codecov'
-  formatter SimpleCov::Formatter::Codecov
+  add_filter 'app/channels'
   add_filter 'app/helpers'
   add_filter 'app/jobs'
-  add_filter 'app/channels'
+  add_filter 'app/mailers'
+
+  if ENV['CODECOV_TOKEN']
+    require 'codecov'
+    formatter SimpleCov::Formatter::Codecov
+  end
 end
 
 ENV['RAILS_ENV'] ||= 'test'

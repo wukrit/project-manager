@@ -1,7 +1,7 @@
 require "test_helper"
 
 class ProjectTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test '#new should initialize the class' do
+    assert_kind_of Project, Project.new
+  end
 end

@@ -87,4 +87,5 @@ jobs:
         POSTGRES_PASSWORD: password
         PGPORT: ${{ job.services.postgres.ports[5432] }}
         RAILS_ENV: test
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       run: bundle exec rake
