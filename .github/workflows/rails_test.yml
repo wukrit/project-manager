@@ -90,9 +90,7 @@ jobs:
       run: bundle exec rake
 
     - name: Upload Test Coverage
-      uses: codecov/codecov-action@v1
-      with:
-        files: ./coverage/.resultset.json
-        flags: unittests
-        name: codecov-umbrella
-        fail_ci_if_error: true
+      run: |
+        curl -Os https://uploader.codecov.io/v0.1.0_4653/linux/codecov
+        chmod +x codecov
+        ./codecov -t ${CODECOV_TOKEN} -f "./coverage/.resultset.json"
