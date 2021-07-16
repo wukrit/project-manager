@@ -87,3 +87,12 @@ jobs:
         PGPORT: ${{ job.services.postgres.ports[5432] }}
         RAILS_ENV: test
       run: bundle exec rake
+    - name: Upload Test Coverage
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage/.resultset.json
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true
+        verbose: true
