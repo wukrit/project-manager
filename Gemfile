@@ -36,6 +36,7 @@ group :development, :test do
   gem 'pry'
   gem 'factory_bot_rails', '~> 6.2.0'
   gem 'simplecov', require: false
+  gem 'codecov', require: false
 end
 
 group :development do
