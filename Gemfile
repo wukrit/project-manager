@@ -35,6 +35,7 @@ gem 'rexml', '~> 3.2', '>= 3.2.4'
 group :development, :test do
   gem 'pry'
   gem 'factory_bot_rails', '~> 6.2.0'
+  gem 'simplecov', require: false
 end
 
 group :development do
