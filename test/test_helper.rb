@@ -4,7 +4,11 @@ require "rails/test_help"
 require 'simplecov'
 require 'codecov'
 
-SimpleCov.start
+SimpleCov.start 'rails' do
+  add_filter '/bin/'
+  add_filter '/db/'
+  add_filter '/test/'
+end
 SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 class ActiveSupport::TestCase
