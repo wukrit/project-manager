@@ -3,3 +3,6 @@
   <li>User Permissions: <%= @membership.role %></li>
   <li>Description: <%= @project.description %></li>
 </ul>
+<% if @membership.role == 'admin' %>
+  <%= button_to "Delete", @project, method: :delete %>
+<% end %>
