@@ -25,10 +25,9 @@ class ProjectsController < ApplicationController
   def destroy
     if current_user.memberships.find_by(project_id: params[:id], role: :admin)
       current_user.projects.find(params[:id]).destroy
-      redirect_to projects_path
-    else
-      render action 'show'
     end
+
+    redirect_to projects_path
   end
 
   private
