@@ -1,18 +1,18 @@
 <h1>New Project</h1>
 
-<%= form_for @project do |f| %>
+<%= form_with model: @project do |project_form| %>
   <fieldset class="input">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+      <%= label_tag :title %>
+      <%= project_form.text_field :title %>
   </fieldset>
 
   <fieldset class="input">
-      <%= f.label :description %>
-      <%= f.text_area :description %>
+      <%= label_tag :description %>
+      <%= project_form.text_area :description %>
   </fieldset>
 
   <fieldset class="button">
-      <%= f.submit "Post" %>
+      <%= project_form.submit "Create" %>
+      <%= link_to "Cancel", action: "index" %>
   </fieldset>
-
 <% end %>

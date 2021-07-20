@@ -10,8 +10,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
 
-    if @project.save
-      Membership.create(project: @project, user: current_user)
+    if @project.save && @project.memberships.create(user: current_user, role: :admin)
       redirect_to projects_path
     else
       render action: 'new'
