@@ -3,7 +3,7 @@
 <% @projects.each do |project| %>
   <ul>
     <li>
-      <%= project.title %> - <%= project.description %>
+      <%= link_to "#{project.title} - #{project.description}", project_path(project.id) %>
     </li>
   </ul>
 <% end %>
